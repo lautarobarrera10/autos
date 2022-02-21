@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autos Argentina</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/67/67994.png" alt="" class="logo" id="logo">
+        <h1>Autos </br>Argentina</h1>
+        <div class="buscador" id="buscador">
+            <input type="text" class="buscador__input" id="buscador__input" placeholder="Buscar auto...">
+            <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="sidebar" id="sidebar">
+        <h4>Marca</h3>
+        <ul>
+            <li>Fiat</li>
+            <li>Chevrolet</li>
+        </ul>
+        <h4>Precio</h3>
+        <ul>
+            <li>Hasta $1.500.000</li>
+            <li>$1.500.000 a $3.000.000</li>
+            <li>$3.000.000 a $5.000.000</li>
+        </ul>
+    </section>
+
+    <main class="main" id="main">
+        <div class="cardCar" id="cardCar">
+            <img src="https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7e260c425a1b4ceb9c0821f847075a3d.jpg" alt="">
+            <div class="card__text" id="card__text">
+                <p>Cruze</p>
+                <p class="precio">$3.300.000</p>
+            </div>
+        </div>
+        <div class="cardCar" id="cardCar">
+            <img src="https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7e260c425a1b4ceb9c0821f847075a3d.jpg" alt="">
+            <div class="card__text" id="card__text">
+                <p>Cruze</p>
+                <p class="precio">$3.300.000</p>
+            </div>
+        </div>
+        <div class="cardCar" id="cardCar">
+            <img src="https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7e260c425a1b4ceb9c0821f847075a3d.jpg" alt="">
+            <div class="card__text" id="card__text">
+                <p>Cruze</p>
+                <p class="precio">$3.300.000</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../src/index.js"></script>
+</body>
+</html>

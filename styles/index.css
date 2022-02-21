@@ -1,0 +1,97 @@
+body {
+    display: grid;
+    grid-template: 40px 80px 1fr 1fr / 2fr 40px 7fr;
+    grid-template-areas: 
+    "header header header"
+    ". .  ."
+    "sidebar . main "
+    "sidebar . main ";
+    padding: 0 80px;
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 48px;
+}
+
+h1 {
+    margin-left: 4px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.buscador {
+    position: relative;
+    margin-left: 24px;
+}
+
+.buscador input {
+    width: 580px;
+    height: 32px;
+    border: 1px solid #888;
+    border-right: none;
+    text-indent: 8px;
+    font-size: 16px;
+}
+
+.buscador input:focus {
+    outline: none;
+}
+
+.buscador button {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #888;
+    border-left: none;
+    background-color: white;
+}
+
+ul {
+    margin-top: -16px;
+}
+
+ul li {
+    margin-left: -24px;
+    margin-bottom: 4px;
+    list-style: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardCar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.cardCar img {
+    width: 80%;
+}
+
+.card__text {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.precio {
+    color: green;
+}
