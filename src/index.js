@@ -1,125 +1,37 @@
-class Auto {
-    constructor({marca, modelo, imgURL, precio}){
-        this.marca = marca;
-        this.modelo = modelo;
-        this.imgURL = imgURL;
-        this.precio = precio;
-    }
+import { autos } from './modules/cars.js';
+
+// Función para mappear los autos
+const carsMapped = autos => {
+    const carsMapped = autos.map(auto => (
+        `
+        <div class="cardCar" id="cardCar">
+            <img src="${auto.imgURL}" alt="">
+            <div class="card__text" id="card__text">
+                <p>${auto.modelo}</p>
+                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
+            </div>
+        </div>
+        `
+    ))
+    return carsMapped;
 }
 
-
-// Instancias de autos
-// Chevrolet
-const chevroletCruze = new Auto({
-    marca: "Chevrolet",
-    modelo: "Cruze",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7e260c425a1b4ceb9c0821f847075a3d.jpg",
-    precio: 3300000,
-});
-
-const chevroletCruze5 = new Auto({
-    marca: "Chevrolet",
-    modelo: "Cruze 5",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_65e56ea3961347348a4fe469e9471793.jpg",
-    precio: 3300000,
-});
-
-const chevroletEquinox = new Auto({
-    marca: "Chevrolet",
-    modelo: "Equinox",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_c10f0bc2da6c4a1ea8196486974567d3.jpg",
-    precio: 3500000,
-});
-
-const chevroletOnix = new Auto({
-    marca: "Chevrolet",
-    modelo: "Onix",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_0d008ceaa2eb419883ad5c2f1eea7838.jpg",
-    precio: 2600000,
-});
-
-const chevroletOnixJoy = new Auto({
-    marca: "Chevrolet",
-    modelo: "Trailblazer",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_1e3679ee3771407880d1072f8d162fd7.jpg",
-    precio: 7400000,
-});
-
-
-// Fiat
-const fiat500Abarth = new Auto({
-    marca: "Fiat",
-    modelo: "500 Abart",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_e413b675c64c4bf5a3df4151c572ed83.jpg",
-    precio: 4500000,
-});
-
-const fiatArgo = new Auto({
-    marca: "Fiat",
-    modelo: "Argo",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_2ae2526b53ab4a3fab253234e754fc07.jpg",
-    precio: 2600000,
-});
-
-const fiatCronos = new Auto({
-    marca: "Fiat",
-    modelo: "Cronos",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_f0841ec842724c9e9511da5b7e4c4f6f.jpg",
-    precio: 2300000,
-});
-
-const fiatMobi = new Auto({
-    marca: "Fiat",
-    modelo: "Mobi",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_0bac713eaa90438fa013179d5e1fff7a.jpg",
-    precio: 2100000,
-});
-
-const fiatFiorino = new Auto({
-    marca: "Fiat",
-    modelo: "Fiorino",
-    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7fce670fc75e4a16824a0222af7dce36.jpg",
-    precio: 2600000,
-});
-
-// Array con todos los autos
-const autos = [
-    chevroletCruze,
-    chevroletCruze5, 
-    chevroletEquinox, 
-    chevroletOnix, 
-    chevroletOnixJoy,
-    fiat500Abarth,
-    fiatArgo,
-    fiatCronos,
-    fiatMobi,
-    fiatFiorino,
-];
-
-// Sección donde imprimimos los autos
+// Sección main
 const main = document.getElementById('main');
 
-// Transformación del array de autos a un pedazo de HTML
-const carsMapped = autos.map(auto => (
-    `
-    <div class="cardCar" id="cardCar">
-        <img src="${auto.imgURL}" alt="">
-        <div class="card__text" id="card__text">
-            <p>${auto.modelo}</p>
-            <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
-        </div>
-    </div>
-    `
-))
+// Mappeo de todos los autos
+const allCarsMapped = carsMapped(autos);
 
-// Imprimir las transformaciones de los autos en main
-const imprimirAutos = () => main.innerHTML = carsMapped.join('');
-imprimirAutos();
+// Función para imprimir en la sección main
+const imprimirAutos = autos => main.innerHTML = autos.join('');
+
+// Imprimimos todos los autos mappeados en el main
+imprimirAutos(allCarsMapped);
+
 
 
 // Buscador
 const buscador = document.getElementById('buscador__input');
-
 
 const buscarAuto = busqueda => {
     const valorBusqueda = busqueda.srcElement.value;
@@ -130,49 +42,53 @@ const buscarAuto = busqueda => {
         return modeloEnMinusculas.includes(valorBusquedaEnMinuscula);
     });
 
-    const carsMapped = filtroDeAutos.map(auto => (
-        `
-        <div class="cardCar" id="cardCar">
-            <img src="${auto.imgURL}" alt="">
-            <div class="card__text" id="card__text">
-                <p>${auto.modelo}</p>
-                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
-            </div>
-        </div>
-        `
-    ));
-
-    main.innerHTML = carsMapped.join('');
+    const resultado = carsMapped(filtroDeAutos);
+    imprimirAutos(resultado);
 }
 
 buscador.addEventListener('input', buscarAuto);
 
 // Filtros
-// Marcas
+
+// Filtrar por marcas
+
+// Arrays de autos filtrados por marcas
 const autosChevrolet = autos.filter(auto => auto.marca == "Chevrolet");
 const autosFiat = autos.filter(auto => auto.marca == "Fiat");
 
-const filtrarAutos = marca => {
-    const autosFiatMapped = marca.map(auto => (
-        `
-        <div class="cardCar" id="cardCar">
-            <img src="${auto.imgURL}" alt="">
-            <div class="card__text" id="card__text">
-                <p>${auto.modelo}</p>
-                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
-            </div>
-        </div>
-        `
-    ));
-    main.innerHTML = autosFiatMapped.join('');
+// Botones en el DOM para filtrar por marcas
+const filtrarTodosButton = document.querySelector('.filtrarTodos')
+const filtrarFiatButton = document.querySelector('.filtrarFiat');
+const filtrarChevroletButton = document.querySelector('.filtrarChevrolet');
+
+// Función para mappear e imprimir los autos filtrados
+const filtrarPorMarca = marca => {
+    const autosMappeados = carsMapped(marca);
+    imprimirAutos(autosMappeados);
 }
 
-// Precio
+// Add Event Listeners para cada botón del DOM
+filtrarTodosButton.addEventListener('click', () => imprimirAutos(allCarsMapped))
+filtrarFiatButton.addEventListener('click', () => filtrarPorMarca(autosFiat));
+filtrarChevroletButton.addEventListener('click', () => filtrarPorMarca(autosChevrolet));
+
+
+
+// Filtrar por precios
+
+// Arrays de autos filtrados por precios
 const autosBaratos = autos.filter(auto => auto.precio <= 3000000);
 const autosMedios = autos.filter(auto => auto.precio >= 3000000 && auto.precio <= 5000000);
 const autosCaros = autos.filter(auto => auto.precio >= 5000000);
 
-const filtrarAutosPorPrecio = rango => {
+// Botones en el DOM para filtrar por precios
+const filtrarPreciosTodosButton = document.querySelector('.filtrarPreciosTodos');
+const filtrarBaratosButton = document.querySelector('.filtrarBaratos');
+const filtrarMediosButton = document.querySelector('.filtrarMedios');
+const filtrarCarosButton = document.querySelector('.filtrarCaros');
+
+// Función para mappear e imprimir los autos filtrados
+const filtrarPorPrecio = rango => {
     let autosFiltrados;
     if (rango == "baratos") {
         autosFiltrados = autosBaratos;
@@ -184,16 +100,12 @@ const filtrarAutosPorPrecio = rango => {
         autosFiltrados = autos;
     }
 
-    const autosFiltradosMapped = autosFiltrados.map(auto => (
-        `
-        <div class="cardCar" id="cardCar">
-            <img src="${auto.imgURL}" alt="">
-            <div class="card__text" id="card__text">
-                <p>${auto.modelo}</p>
-                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
-            </div>
-        </div>
-        `
-    ));
-    main.innerHTML = autosFiltradosMapped.join('');
+    const autosFiltradosMapped = carsMapped(autosFiltrados);
+    imprimirAutos(autosFiltradosMapped);
 }
+
+// Add Event Listeners para cada botón del DOM
+filtrarPreciosTodosButton.addEventListener('click', () => imprimirAutos(allCarsMapped))
+filtrarBaratosButton.addEventListener('click', () => filtrarPorPrecio('baratos'));
+filtrarMediosButton.addEventListener('click', () => filtrarPorPrecio('medios'));
+filtrarCarosButton.addEventListener('click', () => filtrarPorPrecio('caros'));

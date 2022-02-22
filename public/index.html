@@ -27,16 +27,16 @@
     <section class="sidebar" id="sidebar">
         <h4>Marca</h3>
         <ul>
-            <li onclick="imprimirAutos()">Todos</li>
-            <li onclick="filtrarAutos(autosFiat)">Fiat</li>
-            <li onclick="filtrarAutos(autosChevrolet)">Chevrolet</li>
+            <li class="filtrarTodos">Todos</li>
+            <li class="filtrarFiat">Fiat</li>
+            <li class="filtrarChevrolet">Chevrolet</li>
         </ul>
         <h4>Precio</h3>
         <ul>
-            <li onclick="imprimirAutos()">Todos</li>
-            <li onclick="filtrarAutosPorPrecio('baratos')">Hasta $3.000.000</li>
-            <li onclick="filtrarAutosPorPrecio('medios')">$3.000.000 a $5.000.000</li>
-            <li onclick="filtrarAutosPorPrecio('caros')"> Más de $5.000.000</li>
+            <li class="filtrarPreciosTodos">Todos</li>
+            <li class="filtrarBaratos">Hasta $3.000.000</li>
+            <li class="filtrarMedios">$3.000.000 a $5.000.000</li>
+            <li class="filtrarCaros"> Más de $5.000.000</li>
         </ul>
     </section>
 
@@ -63,7 +63,6 @@
             </div>
         </div>
     </main>
-
-    <script src="../src/index.js"></script>
+    <script type="module" src="../src/index.js"></script>
 </body>
 </html>
