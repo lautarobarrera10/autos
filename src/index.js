@@ -9,6 +9,7 @@ class Auto {
 
 
 // Instancias de autos
+// Chevrolet
 const chevroletCruze = new Auto({
     marca: "Chevrolet",
     modelo: "Cruze",
@@ -45,9 +46,55 @@ const chevroletOnixJoy = new Auto({
 });
 
 
+// Fiat
+const fiat500Abarth = new Auto({
+    marca: "Fiat",
+    modelo: "500 Abart",
+    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_e413b675c64c4bf5a3df4151c572ed83.jpg",
+    precio: 4500000,
+});
+
+const fiatArgo = new Auto({
+    marca: "Fiat",
+    modelo: "Argo",
+    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_2ae2526b53ab4a3fab253234e754fc07.jpg",
+    precio: 2600000,
+});
+
+const fiatCronos = new Auto({
+    marca: "Fiat",
+    modelo: "Cronos",
+    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_f0841ec842724c9e9511da5b7e4c4f6f.jpg",
+    precio: 2300000,
+});
+
+const fiatMobi = new Auto({
+    marca: "Fiat",
+    modelo: "Mobi",
+    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_0bac713eaa90438fa013179d5e1fff7a.jpg",
+    precio: 2100000,
+});
+
+const fiatFiorino = new Auto({
+    marca: "Fiat",
+    modelo: "Fiorino",
+    imgURL: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_7fce670fc75e4a16824a0222af7dce36.jpg",
+    precio: 2600000,
+});
 
 // Array con todos los autos
-const autos = [chevroletCruze, chevroletCruze5, chevroletEquinox, chevroletOnix, chevroletOnixJoy];
+const autos = [
+    chevroletCruze,
+    chevroletCruze5, 
+    chevroletEquinox, 
+    chevroletOnix, 
+    chevroletOnixJoy,
+    fiat500Abarth,
+    fiatArgo,
+    fiatCronos,
+    fiatMobi,
+    fiatFiorino,
+];
 
 // Sección donde imprimimos los autos
 const main = document.getElementById('main');
@@ -66,7 +113,8 @@ const carsMapped = autos.map(auto => (
 ))
 
 // Imprimir las transformaciones de los autos en main
-main.innerHTML = carsMapped.join('');
+const imprimirAutos = () => main.innerHTML = carsMapped.join('');
+imprimirAutos();
 
 
 // Buscador
@@ -99,4 +147,53 @@ const buscarAuto = busqueda => {
 
 buscador.addEventListener('input', buscarAuto);
 
+// Filtros
+// Marcas
+const autosChevrolet = autos.filter(auto => auto.marca == "Chevrolet");
+const autosFiat = autos.filter(auto => auto.marca == "Fiat");
 
+const filtrarAutos = marca => {
+    const autosFiatMapped = marca.map(auto => (
+        `
+        <div class="cardCar" id="cardCar">
+            <img src="${auto.imgURL}" alt="">
+            <div class="card__text" id="card__text">
+                <p>${auto.modelo}</p>
+                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
+            </div>
+        </div>
+        `
+    ));
+    main.innerHTML = autosFiatMapped.join('');
+}
+
+// Precio
+const autosBaratos = autos.filter(auto => auto.precio <= 3000000);
+const autosMedios = autos.filter(auto => auto.precio >= 3000000 && auto.precio <= 5000000);
+const autosCaros = autos.filter(auto => auto.precio >= 5000000);
+
+const filtrarAutosPorPrecio = rango => {
+    let autosFiltrados;
+    if (rango == "baratos") {
+        autosFiltrados = autosBaratos;
+    } else if (rango == "medios") {
+        autosFiltrados = autosMedios;
+    } else if (rango == "caros" ) {
+        autosFiltrados = autosCaros;
+    } else {
+        autosFiltrados = autos;
+    }
+
+    const autosFiltradosMapped = autosFiltrados.map(auto => (
+        `
+        <div class="cardCar" id="cardCar">
+            <img src="${auto.imgURL}" alt="">
+            <div class="card__text" id="card__text">
+                <p>${auto.modelo}</p>
+                <p class="precio">$${auto.precio.toLocaleString('es-AR')}</p>
+            </div>
+        </div>
+        `
+    ));
+    main.innerHTML = autosFiltradosMapped.join('');
+}
