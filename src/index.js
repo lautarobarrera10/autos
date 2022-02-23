@@ -53,8 +53,8 @@ buscador.addEventListener('input', buscarAuto);
 // Filtrar por marcas
 
 // Arrays de autos filtrados por marcas
-const autosChevrolet = autos.filter(auto => auto.marca == "Chevrolet");
-const autosFiat = autos.filter(auto => auto.marca == "Fiat");
+const autosChevrolet = autosOrdenadosPorGanancias.filter(auto => auto.marca == "Chevrolet");
+const autosFiat = autosOrdenadosPorGanancias.filter(auto => auto.marca == "Fiat");
 
 // Botones en el DOM para filtrar por marcas
 const filtrarTodosButton = document.querySelector('.filtrarTodos')
@@ -77,9 +77,9 @@ filtrarChevroletButton.addEventListener('click', () => filtrarPorMarca(autosChev
 // Filtrar por precios
 
 // Arrays de autos filtrados por precios
-const autosBaratos = autos.filter(auto => auto.precio <= 3000000);
-const autosMedios = autos.filter(auto => auto.precio >= 3000000 && auto.precio <= 5000000);
-const autosCaros = autos.filter(auto => auto.precio >= 5000000);
+const autosBaratos = autosOrdenadosPorGanancias.filter(auto => auto.precio <= 3000000);
+const autosMedios = autosOrdenadosPorGanancias.filter(auto => auto.precio >= 3000000 && auto.precio <= 5000000);
+const autosCaros = autosOrdenadosPorGanancias.filter(auto => auto.precio >= 5000000);
 
 // Botones en el DOM para filtrar por precios
 const filtrarPreciosTodosButton = document.querySelector('.filtrarPreciosTodos');
