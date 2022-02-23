@@ -1,4 +1,4 @@
-import { autos } from './modules/cars.js';
+import { autos, autosOrdenadosPorGanancias } from './modules/cars.js';
 
 // Función para mappear los autos
 const carsMapped = autos => {
@@ -20,7 +20,7 @@ const carsMapped = autos => {
 const main = document.getElementById('main');
 
 // Mappeo de todos los autos
-const allCarsMapped = carsMapped(autos);
+const allCarsMapped = carsMapped(autosOrdenadosPorGanancias);
 
 // Función para imprimir en la sección main
 const imprimirAutos = autos => main.innerHTML = autos.join('');
@@ -37,7 +37,7 @@ const buscarAuto = busqueda => {
     const valorBusqueda = busqueda.srcElement.value;
     const valorBusquedaEnMinuscula = valorBusqueda.toLowerCase();
 
-    const filtroDeAutos = autos.filter(auto => {
+    const filtroDeAutos = autosOrdenadosPorGanancias.filter(auto => {
         const modeloEnMinusculas = auto.modelo.toLowerCase();
         return modeloEnMinusculas.includes(valorBusquedaEnMinuscula);
     });
